@@ -4,8 +4,28 @@
     "slug": "sorting",
     "name": "Sorting"
   },
-  "updatedAt": "2026-09-02T13:46:14.512Z",
+  "updatedAt": "2026-09-02T13:48:09.220Z",
   "problems": [
+    {
+      "frontendId": "56",
+      "title": "Merge Intervals",
+      "slug": "merge-intervals",
+      "problemName": "0056-merge-intervals",
+      "difficulty": "Medium",
+      "leetcodeUrl": "https://leetcode.com/problems/merge-intervals/",
+      "folderPath": "0056-merge-intervals/",
+      "readmePath": "0056-merge-intervals/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "0056-merge-intervals.cpp",
+          "path": "0056-merge-intervals/0056-merge-intervals.cpp",
+          "sha": "3f8039a6b5f6ece273e5f7b15b56eec61429b391",
+          "lastSyncedAt": "2026-09-02T13:48:09.220Z"
+        }
+      ]
+    },
     {
       "frontendId": "242",
       "title": "Valid Anagram",
