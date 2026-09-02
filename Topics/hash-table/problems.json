@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "topic": {
+    "slug": "hash-table",
+    "name": "Hash Table"
+  },
+  "updatedAt": "2026-09-02T13:45:32.719Z",
+  "problems": [
+    {
+      "frontendId": "13",
+      "title": "Roman to Integer",
+      "slug": "roman-to-integer",
+      "problemName": "0013-roman-to-integer",
+      "difficulty": "Easy",
+      "leetcodeUrl": "https://leetcode.com/problems/roman-to-integer/",
+      "folderPath": "0013-roman-to-integer/",
+      "readmePath": "0013-roman-to-integer/README.md",
+      "solutions": [
+        {
+          "language": "Java",
+          "extension": ".java",
+          "filename": "0013-roman-to-integer.java",
+          "path": "0013-roman-to-integer/0013-roman-to-integer.java",
+          "sha": "18988a79ac4753f29489aff1c203d421469a896f",
+          "lastSyncedAt": "2026-09-02T13:45:32.719Z"
+        }
+      ]
+    }
+  ]
+}
