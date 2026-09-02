@@ -4,7 +4,7 @@
     "slug": "array",
     "name": "Array"
   },
-  "updatedAt": "2026-09-02T13:46:28.280Z",
+  "updatedAt": "2026-09-02T13:47:19.865Z",
   "problems": [
     {
       "frontendId": "14",
@@ -63,6 +63,26 @@
           "path": "0136-single-number/0136-single-number.cpp",
           "sha": "1e73a5cdaa5badaafd79a079c800ae6e853dae08",
           "lastSyncedAt": "2026-09-02T13:44:37.358Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "493",
+      "title": "Reverse Pairs",
+      "slug": "reverse-pairs",
+      "problemName": "0493-reverse-pairs",
+      "difficulty": "Hard",
+      "leetcodeUrl": "https://leetcode.com/problems/reverse-pairs/",
+      "folderPath": "0493-reverse-pairs/",
+      "readmePath": "0493-reverse-pairs/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "0493-reverse-pairs.cpp",
+          "path": "0493-reverse-pairs/0493-reverse-pairs.cpp",
+          "sha": "5842afa941af1e7088d8fbe7ef7c5ce9a7e47b38",
+          "lastSyncedAt": "2026-09-02T13:47:19.865Z"
         }
       ]
     },
