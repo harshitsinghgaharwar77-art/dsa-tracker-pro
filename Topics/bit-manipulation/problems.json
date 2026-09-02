@@ -4,7 +4,7 @@
     "slug": "bit-manipulation",
     "name": "Bit Manipulation"
   },
-  "updatedAt": "2026-09-02T13:44:14.985Z",
+  "updatedAt": "2026-09-02T13:44:27.450Z",
   "problems": [
     {
       "frontendId": "78",
@@ -43,6 +43,26 @@
           "path": "0461-hamming-distance/0461-hamming-distance.cpp",
           "sha": "40d652c868d92dc28e5cf2abfcc7021cad9ac1c0",
           "lastSyncedAt": "2026-09-02T13:44:14.985Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "2220",
+      "title": "Minimum Bit Flips to Convert Number",
+      "slug": "minimum-bit-flips-to-convert-number",
+      "problemName": "2220-minimum-bit-flips-to-convert-number",
+      "difficulty": "Easy",
+      "leetcodeUrl": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+      "folderPath": "2220-minimum-bit-flips-to-convert-number/",
+      "readmePath": "2220-minimum-bit-flips-to-convert-number/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "2220-minimum-bit-flips-to-convert-number.cpp",
+          "path": "2220-minimum-bit-flips-to-convert-number/2220-minimum-bit-flips-to-convert-number.cpp",
+          "sha": "cddba914bfd8783bac1b1536917ac4dede34e080",
+          "lastSyncedAt": "2026-09-02T13:44:27.450Z"
         }
       ]
     }
