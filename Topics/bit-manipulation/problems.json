@@ -4,7 +4,7 @@
     "slug": "bit-manipulation",
     "name": "Bit Manipulation"
   },
-  "updatedAt": "2026-09-02T13:44:45.400Z",
+  "updatedAt": "2026-09-02T13:44:57.072Z",
   "problems": [
     {
       "frontendId": "29",
@@ -63,6 +63,26 @@
           "path": "0136-single-number/0136-single-number.cpp",
           "sha": "1e73a5cdaa5badaafd79a079c800ae6e853dae08",
           "lastSyncedAt": "2026-09-02T13:44:37.358Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "231",
+      "title": "Power of Two",
+      "slug": "power-of-two",
+      "problemName": "0231-power-of-two",
+      "difficulty": "Easy",
+      "leetcodeUrl": "https://leetcode.com/problems/power-of-two/",
+      "folderPath": "0231-power-of-two/",
+      "readmePath": "0231-power-of-two/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "0231-power-of-two.cpp",
+          "path": "0231-power-of-two/0231-power-of-two.cpp",
+          "sha": "04dfc02fdd7c749a207f84cd430004d5078b7686",
+          "lastSyncedAt": "2026-09-02T13:44:57.072Z"
         }
       ]
     },
