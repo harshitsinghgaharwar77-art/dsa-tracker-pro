@@ -4,7 +4,7 @@
     "slug": "string",
     "name": "String"
   },
-  "updatedAt": "2026-09-02T13:45:10.821Z",
+  "updatedAt": "2026-09-02T13:45:18.745Z",
   "problems": [
     {
       "frontendId": "8",
@@ -23,6 +23,26 @@
           "path": "0008-string-to-integer-atoi/0008-string-to-integer-atoi.cpp",
           "sha": "9f7096d285585e03d45f6563a912097ea7d1bb97",
           "lastSyncedAt": "2026-09-02T13:45:10.821Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "1614",
+      "title": "Maximum Nesting Depth of the Parentheses",
+      "slug": "maximum-nesting-depth-of-the-parentheses",
+      "problemName": "1614-maximum-nesting-depth-of-the-parentheses",
+      "difficulty": "Easy",
+      "leetcodeUrl": "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/",
+      "folderPath": "1614-maximum-nesting-depth-of-the-parentheses/",
+      "readmePath": "1614-maximum-nesting-depth-of-the-parentheses/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "1614-maximum-nesting-depth-of-the-parentheses.cpp",
+          "path": "1614-maximum-nesting-depth-of-the-parentheses/1614-maximum-nesting-depth-of-the-parentheses.cpp",
+          "sha": "740e9aefacf900c4b434dcf3fcbea0133813b874",
+          "lastSyncedAt": "2026-09-02T13:45:18.745Z"
         }
       ]
     }
