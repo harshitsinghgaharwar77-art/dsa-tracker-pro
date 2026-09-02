@@ -4,7 +4,7 @@
     "slug": "string",
     "name": "String"
   },
-  "updatedAt": "2026-09-02T13:46:43.672Z",
+  "updatedAt": "2026-09-02T13:46:56.062Z",
   "problems": [
     {
       "frontendId": "8",
@@ -63,6 +63,26 @@
           "path": "0014-longest-common-prefix/0014-longest-common-prefix.cpp",
           "sha": "066c9d07a227687973ac5ceb2f833fdbfa69f9b1",
           "lastSyncedAt": "2026-09-02T13:46:28.280Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "151",
+      "title": "Reverse Words in a String",
+      "slug": "reverse-words-in-a-string",
+      "problemName": "0151-reverse-words-in-a-string",
+      "difficulty": "Medium",
+      "leetcodeUrl": "https://leetcode.com/problems/reverse-words-in-a-string/",
+      "folderPath": "0151-reverse-words-in-a-string/",
+      "readmePath": "0151-reverse-words-in-a-string/README.md",
+      "solutions": [
+        {
+          "language": "Java",
+          "extension": ".java",
+          "filename": "0151-reverse-words-in-a-string.java",
+          "path": "0151-reverse-words-in-a-string/0151-reverse-words-in-a-string.java",
+          "sha": "9ec7af93bd76803cf0b82e4af1734977e18a9985",
+          "lastSyncedAt": "2026-09-02T13:46:56.062Z"
         }
       ]
     },
