@@ -4,7 +4,7 @@
     "slug": "bit-manipulation",
     "name": "Bit Manipulation"
   },
-  "updatedAt": "2026-09-02T13:43:56.886Z",
+  "updatedAt": "2026-09-02T13:44:14.985Z",
   "problems": [
     {
       "frontendId": "78",
@@ -23,6 +23,26 @@
           "path": "0078-subsets/0078-subsets.cpp",
           "sha": "687f47f7117f9d1499fd3b55a146fe81c2e9686d",
           "lastSyncedAt": "2026-09-02T13:43:56.886Z"
+        }
+      ]
+    },
+    {
+      "frontendId": "461",
+      "title": "Hamming Distance",
+      "slug": "hamming-distance",
+      "problemName": "0461-hamming-distance",
+      "difficulty": "Easy",
+      "leetcodeUrl": "https://leetcode.com/problems/hamming-distance/",
+      "folderPath": "0461-hamming-distance/",
+      "readmePath": "0461-hamming-distance/README.md",
+      "solutions": [
+        {
+          "language": "C++",
+          "extension": ".cpp",
+          "filename": "0461-hamming-distance.cpp",
+          "path": "0461-hamming-distance/0461-hamming-distance.cpp",
+          "sha": "40d652c868d92dc28e5cf2abfcc7021cad9ac1c0",
+          "lastSyncedAt": "2026-09-02T13:44:14.985Z"
         }
       ]
     }
