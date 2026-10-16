@@ -158,11 +158,11 @@ export const CodeCompiler: React.FC = () => {
       {/* Compiler Header Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-900 border border-slate-800 rounded-2xl shadow-sm">
         <div className="flex items-center gap-2">
-          <Terminal className="w-5 h-5 text-indigo-400 shrink-0 ml-1" />
+          <Terminal className="w-5 h-5 text-emerald-400 shrink-0 ml-1" />
           <select
             value={lang}
             onChange={(e) => handleLangChange(e.target.value)}
-            className="bg-slate-950 border border-slate-800 text-xs sm:text-sm font-semibold text-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500 cursor-pointer"
+            className="bg-slate-950 border border-slate-800 text-xs sm:text-sm font-semibold text-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-emerald-500 cursor-pointer"
           >
             <option value="javascript">JavaScript (Instant In-Browser)</option>
             <option value="python">Python</option>
@@ -180,7 +180,7 @@ export const CodeCompiler: React.FC = () => {
           <button
             onClick={handleRun}
             disabled={isRunning}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-600/25 transition-all active:scale-95 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 rounded-xl text-xs sm:text-sm font-black shadow-lg shadow-emerald-500/25 transition-all active:scale-95 disabled:opacity-50 hover:brightness-105"
           >
             <Play className={`w-4 h-4 fill-current ${isRunning ? 'animate-spin' : ''}`} />
             <span>{isRunning ? 'Running...' : 'Run Code'}</span>
@@ -199,10 +199,10 @@ export const CodeCompiler: React.FC = () => {
           {/* Complexity Heuristic */}
           <button
             onClick={handleAnalyzeComplexity}
-            className="flex items-center gap-1.5 px-3 py-2 bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 border border-purple-500/30 rounded-xl text-xs font-semibold transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold transition-colors"
             title="Estimate Big-O Complexity"
           >
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span className="hidden sm:inline">Analyze Big-O</span>
           </button>
 
@@ -223,8 +223,8 @@ export const CodeCompiler: React.FC = () => {
         <div className="lg:col-span-7 glass-card rounded-2xl border border-slate-800/80 overflow-hidden shadow-lg flex flex-col h-[580px]">
           <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/60 border-b border-slate-800 text-xs font-semibold text-slate-400">
             <div className="flex items-center gap-2">
-              <Code className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Source Code</span>
+              <Code className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="font-bold text-slate-300">Source Code</span>
             </div>
             <span className="font-mono text-[11px] text-slate-500">
               Press Cmd/Ctrl + Enter to run
@@ -252,9 +252,9 @@ export const CodeCompiler: React.FC = () => {
                   <button
                     key={tc.id}
                     onClick={() => setActiveCaseIndex(idx)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 ${
                       activeCaseIndex === idx
-                        ? 'bg-indigo-600 text-white shadow-sm'
+                        ? 'bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/20'
                         : 'bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                     }`}
                   >

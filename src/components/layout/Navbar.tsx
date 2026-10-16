@@ -87,7 +87,7 @@ export const Navbar: React.FC = () => {
               <span className="font-heading font-bold text-white text-base tracking-tight">
                 DSA Tracker Pro
               </span>
-              <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded-md">
+              <span className="px-2 py-0.5 text-[10px] font-black bg-gradient-to-r from-emerald-500/20 to-lime-500/20 text-emerald-400 border border-emerald-500/40 rounded-full tracking-wider">
                 v2.0
               </span>
             </div>
@@ -96,13 +96,13 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* View Navigation Tabs */}
-        <nav className="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800/90 shadow-inner">
+        <nav className="flex items-center bg-slate-900/90 p-1.5 rounded-2xl border border-emerald-950/60 shadow-inner">
           <button
             onClick={() => setActiveView('tracker')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 ${
               activeView === 'tracker'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/25 scale-[1.02]'
+                : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
             }`}
           >
             <Code2 className="w-4 h-4" />
@@ -111,10 +111,10 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setActiveView('compiler')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 ${
               activeView === 'compiler'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/25 scale-[1.02]'
+                : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
             }`}
           >
             <Terminal className="w-4 h-4" />
@@ -123,16 +123,16 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setActiveView('revision')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 relative ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 relative ${
               activeView === 'revision'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/25 scale-[1.02]'
+                : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
             }`}
           >
             <RotateCcw className="w-4 h-4" />
             <span>Revise</span>
             {revisionDueCount > 0 && (
-              <span className="px-1.5 py-0.2 text-[10px] font-bold bg-amber-500 text-slate-950 rounded-full animate-pulse">
+              <span className="px-1.5 py-0.2 text-[10px] font-black bg-amber-400 text-slate-950 rounded-full animate-pulse shadow-sm">
                 {revisionDueCount}
               </span>
             )}
@@ -140,10 +140,10 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setActiveView('dashboard')}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 ${
               activeView === 'dashboard'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/25 scale-[1.02]'
+                : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -154,7 +154,7 @@ export const Navbar: React.FC = () => {
         {/* Header Right Actions */}
         <div className="flex items-center gap-2 sm:gap-2.5">
           {/* Progress Ring & Pill */}
-          <div className="hidden lg:flex items-center gap-2.5 bg-slate-900/80 border border-slate-800 px-2.5 py-1 rounded-xl">
+          <div className="hidden lg:flex items-center gap-2.5 bg-slate-900/80 border border-emerald-950/60 px-3 py-1 rounded-2xl">
             <div className="relative w-7 h-7 flex items-center justify-center">
               <svg className="w-7 h-7 transform -rotate-90">
                 <circle
@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
                   cx="14"
                   cy="14"
                   r={12}
-                  className="stroke-indigo-500 transition-all duration-500 ease-out"
+                  className="stroke-emerald-400 transition-all duration-500 ease-out"
                   strokeWidth="2.5"
                   fill="transparent"
                   strokeDasharray={2 * Math.PI * 12}
@@ -182,8 +182,8 @@ export const Navbar: React.FC = () => {
               </span>
             </div>
             <div className="text-right">
-              <div className="text-xs font-semibold text-white">
-                <span className="text-indigo-400">{solvedCount}</span>
+              <div className="text-xs font-bold text-white">
+                <span className="text-emerald-400">{solvedCount}</span>
                 <span className="text-slate-500"> / </span>
                 <span>{totalCount}</span>
               </div>

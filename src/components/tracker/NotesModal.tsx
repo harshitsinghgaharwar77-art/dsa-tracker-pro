@@ -31,7 +31,7 @@ export const NotesModal: React.FC<NotesModalProps> = ({ question, onClose }) => 
         {/* Modal Header */}
         <div className="flex items-center justify-between p-4 sm:px-6 border-b border-slate-800 bg-slate-950/40">
           <div className="flex items-center gap-2.5 min-w-0 pr-3">
-            <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 shrink-0">
+            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 shrink-0">
               <FileText className="w-4 h-4" />
             </div>
             <div className="min-w-0">
@@ -63,7 +63,7 @@ export const NotesModal: React.FC<NotesModalProps> = ({ question, onClose }) => 
               href={question.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+              className="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
             >
               <span>Open Problem</span>
               <ExternalLink className="w-3 h-3" />
@@ -79,7 +79,7 @@ export const NotesModal: React.FC<NotesModalProps> = ({ question, onClose }) => 
 • Time Complexity: O(...)
 • Space Complexity: O(...)
 • Key trick or pattern used"
-            className="w-full p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 resize-y"
+            className="w-full p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50 resize-y"
           />
         </div>
 
@@ -87,13 +87,13 @@ export const NotesModal: React.FC<NotesModalProps> = ({ question, onClose }) => 
         <div className="flex items-center justify-end gap-2 p-4 border-t border-slate-800 bg-slate-950/60">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSave}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-md shadow-purple-600/25 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition-all"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Save Notes</span>

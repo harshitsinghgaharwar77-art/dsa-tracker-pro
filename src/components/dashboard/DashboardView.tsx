@@ -228,8 +228,8 @@ export const DashboardView: React.FC = () => {
         <div className="col-span-2 glass-card p-4 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <Target className="w-5 h-5 text-indigo-400" />
-              <span className="text-xs font-semibold text-slate-200">Daily Solve Target</span>
+              <Target className="w-5 h-5 text-emerald-400" />
+              <span className="text-xs font-bold text-slate-200">Daily Solve Target</span>
             </div>
             {isEditingGoal ? (
               <div className="flex items-center gap-1.5">
@@ -246,7 +246,7 @@ export const DashboardView: React.FC = () => {
                     setDailyGoal(goalDraft);
                     setIsEditingGoal(false);
                   }}
-                  className="px-2 py-0.5 bg-indigo-600 text-white text-[11px] font-bold rounded"
+                  className="px-2.5 py-0.5 bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 text-[11px] font-black rounded-lg"
                 >
                   Save
                 </button>
@@ -254,7 +254,7 @@ export const DashboardView: React.FC = () => {
             ) : (
               <button
                 onClick={() => setIsEditingGoal(true)}
-                className="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300"
+                className="text-[11px] font-bold text-emerald-400 hover:text-emerald-300"
               >
                 Change Goal ({dailyGoal}/day)
               </button>
@@ -264,15 +264,15 @@ export const DashboardView: React.FC = () => {
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs font-mono">
               <span className="text-slate-400">
-                Solved Today: <strong className="text-white">{streakStats.todayCount}</strong>
+                Solved Today: <strong className="text-white font-bold">{streakStats.todayCount}</strong>
               </span>
-              <span className="text-indigo-400 font-bold">
+              <span className="text-emerald-400 font-black">
                 {Math.min(100, Math.round((streakStats.todayCount / dailyGoal) * 100))}%
               </span>
             </div>
-            <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+            <div className="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800/80 p-0.5">
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400 rounded-full transition-all duration-500"
                 style={{
                   width: `${Math.min(100, (streakStats.todayCount / dailyGoal) * 100)}%`,
                 }}
@@ -286,7 +286,7 @@ export const DashboardView: React.FC = () => {
       <div className="glass-card p-5 sm:p-6 rounded-2xl border border-slate-800/80 space-y-4">
         <div>
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-indigo-400" />
+            <MapPin className="w-5 h-5 text-emerald-400" />
             <span>DSA Journey Roadmap</span>
           </h3>
           <p className="text-xs text-slate-400">
@@ -399,11 +399,11 @@ export const DashboardView: React.FC = () => {
 
               // Color levels
               let bg = 'bg-slate-900 border border-slate-800/80';
-              if (item.level === 1) bg = 'bg-emerald-900/60 border border-emerald-700/60';
+              if (item.level === 1) bg = 'bg-emerald-950/80 border border-emerald-800/60';
               if (item.level === 2) bg = 'bg-emerald-700 border border-emerald-600';
               if (item.level === 3) bg = 'bg-emerald-500 border border-emerald-400';
               if (item.level === 4)
-                bg = 'bg-emerald-400 border border-white shadow-sm shadow-emerald-400/50';
+                bg = 'bg-lime-400 border border-amber-300 shadow-sm shadow-lime-400/50';
 
               return (
                 <button
@@ -411,7 +411,7 @@ export const DashboardView: React.FC = () => {
                   onClick={() => setInspectedDay(item.dateStr)}
                   title={`${item.dateStr}: ${item.count} solved`}
                   className={`w-3.5 h-3.5 rounded-sm transition-transform hover:scale-125 ${bg} ${
-                    isSelected ? 'ring-2 ring-indigo-400 scale-125 z-10' : ''
+                    isSelected ? 'ring-2 ring-lime-400 scale-125 z-10' : ''
                   }`}
                 />
               );

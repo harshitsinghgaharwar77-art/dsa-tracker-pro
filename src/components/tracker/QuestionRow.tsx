@@ -80,8 +80,8 @@ export const QuestionRow: React.FC<QuestionRowProps> = ({ question, onOpenNotes 
           onClick={() => toggleSolve(question.id)}
           className={`w-6 h-6 rounded-lg flex items-center justify-center border transition-all shrink-0 active:scale-90 ${
             question.solved
-              ? 'bg-emerald-500 border-emerald-400 text-slate-950 shadow-md shadow-emerald-500/25'
-              : 'border-slate-700 hover:border-indigo-400 bg-slate-950/60'
+              ? 'bg-gradient-to-tr from-emerald-500 to-lime-400 border-emerald-400 text-slate-950 shadow-md shadow-emerald-500/30 scale-105'
+              : 'border-slate-700 hover:border-emerald-400 bg-slate-950/60'
           }`}
           title={question.solved ? 'Mark as Unsolved' : 'Mark as Solved'}
         >
@@ -107,13 +107,13 @@ export const QuestionRow: React.FC<QuestionRowProps> = ({ question, onOpenNotes 
             href={question.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-xs sm:text-sm font-medium tracking-tight truncate hover:text-indigo-300 transition-colors flex items-center gap-1.5 ${
+            className={`text-xs sm:text-sm font-semibold tracking-tight truncate hover:text-emerald-400 transition-colors flex items-center gap-1.5 ${
               question.solved ? 'text-slate-400 line-through decoration-slate-600' : 'text-slate-100'
             }`}
             title={question.title}
           >
             <span>{question.title}</span>
-            <ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 shrink-0 text-slate-400 hover:text-indigo-400 transition-opacity" />
+            <ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 shrink-0 text-slate-400 hover:text-emerald-400 transition-opacity" />
           </a>
 
           {/* Difficulty Badge */}
@@ -150,19 +150,19 @@ export const QuestionRow: React.FC<QuestionRowProps> = ({ question, onOpenNotes 
       <div className="mt-2 sm:mt-0 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800/60">
         {/* Practice Timer */}
         <div
-          className={`flex items-center gap-1.5 px-2 py-1 rounded-lg border text-xs transition-colors ${
+          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs transition-colors ${
             isTimerActive
-              ? 'bg-indigo-500/10 border-indigo-500/40 text-indigo-300'
+              ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-sm shadow-emerald-500/10'
               : 'bg-slate-950/60 border-slate-800 text-slate-400'
           }`}
         >
-          <Clock className={`w-3.5 h-3.5 ${isTimerActive ? 'animate-spin text-indigo-400' : ''}`} />
-          <span className="font-mono text-[11px] font-medium">{formatTime(totalSeconds)}</span>
+          <Clock className={`w-3.5 h-3.5 ${isTimerActive ? 'animate-spin text-emerald-400' : ''}`} />
+          <span className="font-mono text-[11px] font-bold">{formatTime(totalSeconds)}</span>
 
           <button
             onClick={() => toggleTimer(question.id)}
             className={`p-1 rounded hover:bg-slate-800 transition-colors ${
-              isTimerActive ? 'text-indigo-400' : 'text-slate-500 hover:text-slate-300'
+              isTimerActive ? 'text-emerald-400' : 'text-slate-500 hover:text-slate-200'
             }`}
             title={isTimerActive ? 'Pause timer' : 'Start solving timer'}
           >
@@ -183,9 +183,9 @@ export const QuestionRow: React.FC<QuestionRowProps> = ({ question, onOpenNotes 
         {/* Notes Button */}
         <button
           onClick={() => onOpenNotes(question)}
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs font-medium transition-colors ${
+          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all ${
             question.notes && question.notes.trim().length > 0
-              ? 'bg-purple-500/10 border-purple-500/30 text-purple-300 hover:bg-purple-500/20'
+              ? 'bg-amber-500/15 border-amber-500/40 text-amber-300 hover:bg-amber-500/25'
               : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
           }`}
           title="View & Edit notes"
@@ -193,7 +193,7 @@ export const QuestionRow: React.FC<QuestionRowProps> = ({ question, onOpenNotes 
           <FileText className="w-3.5 h-3.5" />
           <span className="text-[11px]">Notes</span>
           {question.notes && question.notes.trim().length > 0 && (
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
           )}
         </button>
 

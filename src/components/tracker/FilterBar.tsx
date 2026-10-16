@@ -135,7 +135,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           {isFiltered && (
             <button
               onClick={clearAllFilters}
-              className="px-2.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs text-slate-300 hover:text-white transition-colors flex items-center gap-1"
+              className="px-2.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-xs text-amber-300 border border-amber-500/30 transition-colors flex items-center gap-1 font-semibold"
             >
               <X className="w-3.5 h-3.5" />
               <span>Reset</span>
@@ -143,8 +143,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           )}
 
           {/* Filter Match Count */}
-          <div className="text-xs font-mono text-slate-400 px-2">
-            <span className="text-indigo-400 font-bold">{totalFiltered}</span>
+          <div className="text-xs font-mono font-bold text-slate-400 px-2">
+            <span className="text-emerald-400 text-sm font-black">{totalFiltered}</span>
             <span className="text-slate-600"> / </span>
             <span>{totalQuestions}</span>
           </div>
@@ -152,9 +152,9 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           {/* Add Question Button */}
           <button
             onClick={onOpenAddModal}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/25 transition-all active:scale-95 ml-auto sm:ml-0"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 text-xs font-black shadow-md shadow-emerald-500/25 transition-all active:scale-95 ml-auto sm:ml-0"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 stroke-[3]" />
             <span className="hidden sm:inline">Add Question</span>
           </button>
         </div>

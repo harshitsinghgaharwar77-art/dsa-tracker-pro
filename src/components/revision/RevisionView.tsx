@@ -88,12 +88,12 @@ export const RevisionView: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
       {/* Head */}
       <div>
-        <div className="flex items-center gap-2 text-indigo-400 text-xs font-semibold mb-1">
-          <RotateCcw className="w-4 h-4" />
-          <span>SCIENTIFIC SPACED REPETITION</span>
+        <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold tracking-wider mb-1 uppercase">
+          <RotateCcw className="w-4 h-4 text-lime-400" />
+          <span>Scientific Spaced Repetition</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Revision Scheduler</h2>
-        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-1">
+        <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-1 leading-relaxed">
           Memory fades exponentially without recall. Re-solve problems from memory when they come
           due on Day 1, 3, 7, 15 & 30 to lock algorithms into long-term intuition.
         </p>
@@ -101,33 +101,33 @@ export const RevisionView: React.FC = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-        <div className="glass-card p-4 rounded-2xl border border-rose-500/20 bg-rose-500/5">
-          <div className="text-2xl font-bold font-heading text-rose-400">{overdueCount}</div>
-          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1">
+        <div className="glass-card p-4 rounded-2xl border border-rose-500/25 bg-rose-500/5">
+          <div className="text-2xl font-black font-heading text-rose-400">{overdueCount}</div>
+          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1.5">
             <AlertCircle className="w-3.5 h-3.5 text-rose-400" />
             <span>Overdue</span>
           </div>
         </div>
 
-        <div className="glass-card p-4 rounded-2xl border border-amber-500/20 bg-amber-500/5">
-          <div className="text-2xl font-bold font-heading text-amber-400">{dueTodayCount}</div>
-          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1">
+        <div className="glass-card p-4 rounded-2xl border border-amber-500/25 bg-amber-500/5">
+          <div className="text-2xl font-black font-heading text-amber-400">{dueTodayCount}</div>
+          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-amber-400" />
             <span>Due Today</span>
           </div>
         </div>
 
-        <div className="glass-card p-4 rounded-2xl border border-indigo-500/20 bg-indigo-500/5">
-          <div className="text-2xl font-bold font-heading text-indigo-400">{upcomingCount}</div>
-          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-indigo-400" />
+        <div className="glass-card p-4 rounded-2xl border border-teal-500/25 bg-teal-500/5">
+          <div className="text-2xl font-black font-heading text-teal-400">{upcomingCount}</div>
+          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-teal-400" />
             <span>Upcoming</span>
           </div>
         </div>
 
-        <div className="glass-card p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5">
-          <div className="text-2xl font-bold font-heading text-emerald-400">{fullyDoneCount}</div>
-          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1">
+        <div className="glass-card p-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10">
+          <div className="text-2xl font-black font-heading text-emerald-400">{fullyDoneCount}</div>
+          <div className="text-xs font-semibold text-slate-300 mt-1 flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
             <span>Fully Mastered</span>
           </div>
@@ -138,10 +138,10 @@ export const RevisionView: React.FC = () => {
       <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
         <button
           onClick={() => setFilter('pending')}
-          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
             filter === 'pending'
-              ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              ? 'bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/20'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
           }`}
         >
           Due & Overdue ({overdueCount + dueTodayCount})
@@ -149,10 +149,10 @@ export const RevisionView: React.FC = () => {
 
         <button
           onClick={() => setFilter('upcoming')}
-          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
             filter === 'upcoming'
-              ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              ? 'bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/20'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
           }`}
         >
           Upcoming ({upcomingCount})
@@ -160,10 +160,10 @@ export const RevisionView: React.FC = () => {
 
         <button
           onClick={() => setFilter('all')}
-          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
             filter === 'all'
-              ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              ? 'bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 shadow-md shadow-emerald-500/20'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
           }`}
         >
           All Solved ({revisionItems.length})
@@ -202,7 +202,7 @@ export const RevisionView: React.FC = () => {
                       href={question.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold text-white hover:text-indigo-400 transition-colors flex items-center gap-1.5"
+                      className="text-sm font-bold text-white hover:text-emerald-400 transition-colors flex items-center gap-1.5"
                     >
                       <span>{question.title}</span>
                       <ExternalLink className="w-3.5 h-3.5 opacity-40 hover:opacity-100" />
@@ -240,13 +240,13 @@ export const RevisionView: React.FC = () => {
                       return (
                         <div
                           key={stageDay}
-                          className={`flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-mono border ${
+                          className={`flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[10px] font-mono border transition-all ${
                             isDone
-                              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                              ? 'bg-emerald-500/15 border-emerald-500/35 text-emerald-300 font-semibold'
                               : isCurrent
                               ? isOverdue
-                                ? 'bg-rose-500/10 border-rose-500/40 text-rose-300 ring-1 ring-rose-500/30'
-                                : 'bg-amber-500/10 border-amber-500/40 text-amber-300 ring-1 ring-amber-500/30'
+                                ? 'bg-rose-500/15 border-rose-500/40 text-rose-300 ring-1 ring-rose-500/30 font-bold'
+                                : 'bg-amber-500/15 border-amber-500/40 text-amber-300 ring-1 ring-amber-500/30 font-bold'
                               : 'bg-slate-900 border-slate-800 text-slate-500'
                           }`}
                         >
@@ -262,7 +262,7 @@ export const RevisionView: React.FC = () => {
                 {!isFullyDone && nextStageIndex !== -1 && (
                   <button
                     onClick={() => markRevision(question.id, nextStageIndex)}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/25 transition-all shrink-0 active:scale-95"
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition-all shrink-0 active:scale-95"
                   >
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Mark Stage {nextStageIndex + 1} Done</span>

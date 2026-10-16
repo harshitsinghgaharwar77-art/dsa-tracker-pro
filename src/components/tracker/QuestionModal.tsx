@@ -65,7 +65,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between p-4 sm:px-6 border-b border-slate-800 bg-slate-950/40">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
+            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
               <Plus className="w-4 h-4" />
             </div>
             <h3 className="text-base font-bold text-white">Add New Problem</h3>
@@ -96,7 +96,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Trapping Rain Water"
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
             />
           </div>
 
@@ -110,7 +110,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               value={link}
               onChange={(e) => setLink(e.target.value)}
               placeholder="https://leetcode.com/problems/..."
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
             />
           </div>
 
@@ -126,7 +126,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 placeholder="e.g. Dynamic Programming"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
               />
               <datalist id="topics-data">
                 {availableTopics.map((t) => (
@@ -142,7 +142,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               <select
                 value={difficulty}
                 onChange={(e) => setDifficulty(e.target.value as Difficulty)}
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500"
               >
                 <option value="Easy">Easy</option>
                 <option value="Medium">Medium</option>
@@ -160,7 +160,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               value={companyStr}
               onChange={(e) => setCompanyStr(e.target.value)}
               placeholder="Google, Amazon, Meta"
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
             />
           </div>
 
@@ -173,7 +173,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Key pattern, intuition, or reminder..."
-              className="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
             />
           </div>
 
@@ -187,7 +187,7 @@ export const QuestionModal: React.FC<QuestionModalProps> = ({
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/25 transition-all"
+              className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 text-xs font-bold shadow-md shadow-emerald-500/20 transition-all"
             >
               Add Problem
             </button>

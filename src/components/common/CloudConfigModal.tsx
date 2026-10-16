@@ -73,7 +73,7 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between p-4 sm:px-6 border-b border-slate-800 bg-slate-950/40">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
+            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
               <Cloud className="w-4 h-4" />
             </div>
             <div>
@@ -111,7 +111,7 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
                 href="https://console.firebase.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] text-indigo-400 hover:underline flex items-center gap-1"
+                className="text-[11px] text-emerald-400 hover:text-emerald-300 hover:underline flex items-center gap-1"
               >
                 <span>Firebase Console</span>
                 <ExternalLink className="w-3 h-3" />
@@ -122,12 +122,12 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
               value={jsonInput}
               onChange={(e) => setJsonInput(e.target.value)}
               placeholder='Paste firebaseConfig = { apiKey: "...", projectId: "..." }'
-              className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500"
+              className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
             />
             <button
               type="button"
               onClick={handleParseJSON}
-              className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 rounded-lg transition-colors"
+              className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 rounded-lg transition-colors"
             >
               Parse & Autofill
             </button>
@@ -144,7 +144,7 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
                 value={config.apiKey}
                 onChange={(e) => setConfig({ ...config, apiKey: e.target.value })}
                 placeholder="AIzaSy..."
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-indigo-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-emerald-500"
               />
             </div>
 
@@ -158,7 +158,7 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
                 value={config.projectId}
                 onChange={(e) => setConfig({ ...config, projectId: e.target.value })}
                 placeholder="my-dsa-tracker"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-indigo-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-emerald-500"
               />
             </div>
 
@@ -171,7 +171,7 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
                 value={config.authDomain}
                 onChange={(e) => setConfig({ ...config, authDomain: e.target.value })}
                 placeholder="my-dsa-tracker.firebaseapp.com"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-indigo-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-slate-200 focus:outline-none focus:border-emerald-500"
               />
             </div>
           </div>
@@ -180,13 +180,13 @@ export const CloudConfigModal: React.FC<CloudConfigModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-white"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/25 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-slate-950 rounded-xl text-xs font-bold shadow-md shadow-emerald-500/20 transition-all"
             >
               <Save className="w-3.5 h-3.5" />
               <span>Save & Connect</span>

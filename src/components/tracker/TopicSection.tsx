@@ -59,13 +59,13 @@ export const TopicSection: React.FC<TopicSectionProps> = ({
         {/* Progress bar & Percent */}
         <div className="flex items-center gap-4 shrink-0">
           <div className="hidden sm:flex flex-col items-end gap-1 w-28">
-            <span className="text-xs font-mono font-semibold text-indigo-400">{percent}%</span>
-            <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+            <span className="text-xs font-mono font-bold text-emerald-400">{percent}%</span>
+            <div className="w-full h-2 bg-slate-800/80 rounded-full overflow-hidden p-0.5">
               <div
                 className={`h-full transition-all duration-500 rounded-full ${
                   isComplete
-                    ? 'bg-emerald-500'
-                    : 'bg-gradient-to-r from-indigo-500 to-purple-500'
+                    ? 'bg-emerald-400 shadow-sm shadow-emerald-400/50'
+                    : 'bg-gradient-to-r from-emerald-500 via-teal-400 to-lime-400'
                 }`}
                 style={{ width: `${percent}%` }}
               />
@@ -82,7 +82,7 @@ export const TopicSection: React.FC<TopicSectionProps> = ({
       <div className="sm:hidden w-full h-1 bg-slate-800">
         <div
           className={`h-full transition-all duration-300 ${
-            isComplete ? 'bg-emerald-500' : 'bg-indigo-500'
+            isComplete ? 'bg-emerald-400' : 'bg-gradient-to-r from-emerald-500 to-lime-400'
           }`}
           style={{ width: `${percent}%` }}
         />
