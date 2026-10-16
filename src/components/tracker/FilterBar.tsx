@@ -107,12 +107,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           <select
             value={diffFilter}
             onChange={(e) => setDiffFilter(e.target.value)}
-            className="bg-slate-900/90 border border-slate-800 text-xs text-slate-300 rounded-xl px-2.5 py-2 focus:outline-none focus:border-indigo-500 cursor-pointer"
+            className="bg-slate-900/90 border border-slate-800 text-xs text-slate-300 rounded-xl px-2.5 py-2 focus:outline-none focus:border-emerald-500 cursor-pointer"
           >
             <option value="all">All Difficulty</option>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
+            <option value="Easy">🟢 Easy</option>
+            <option value="Medium">🟡 Medium</option>
+            <option value="Hard">🔴 Hard</option>
           </select>
 
           {/* Company */}
@@ -120,7 +120,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <select
               value={companyFilter}
               onChange={(e) => setCompanyFilter(e.target.value)}
-              className="bg-slate-900/90 border border-slate-800 text-xs text-slate-300 rounded-xl px-2.5 py-2 focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="bg-slate-900/90 border border-slate-800 text-xs text-slate-300 rounded-xl px-2.5 py-2 focus:outline-none focus:border-emerald-500 cursor-pointer"
             >
               <option value="all">All Companies</option>
               {companies.map((c) => (

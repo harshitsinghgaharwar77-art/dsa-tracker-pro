@@ -29,12 +29,25 @@ export function backfillQuestion(q: Partial<Question>, defaultId: string): Quest
 
 export function loadQuestions(): Question[] {
   if (typeof window === 'undefined') return [];
+
+  // Build lookup map of authentic difficulties from seed data
+  const seedDiffMap = new Map<string, string>();
+  (seedQuestionsData as Partial<Question>[]).forEach((s) => {
+    if (s.id && s.difficulty) seedDiffMap.set(s.id, s.difficulty);
+    if (s.link && s.difficulty) seedDiffMap.set(s.link, s.difficulty);
+  });
+
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed.map((q, idx) => backfillQuestion(q, `q_${idx}`));
+        const merged = parsed.map((q, idx) => {
+          const accurateDiff = (q.id && seedDiffMap.get(q.id)) || (q.link && seedDiffMap.get(q.link)) || q.difficulty;
+          return backfillQuestion({ ...q, difficulty: accurateDiff }, `q_${idx}`);
+        });
+        saveQuestions(merged);
+        return merged;
       }
     }
   } catch (err) {
