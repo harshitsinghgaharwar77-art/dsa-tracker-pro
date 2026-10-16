@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hars_unknown_proj — DSA Sheet Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#6c63ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="hars_DSA" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-mark">H</span>
+          <div class="logo-text">
+            <span class="logo-title">DSA Tracker Pro</span>
+            <span class="logo-sub">track your dsa progress....</span>
+          </div>
+        </div>
+        <nav class="view-tabs" id="view-tabs">
+          <button class="view-tab active" data-view="tracker">Problems</button>
+          <button class="view-tab" data-view="compiler">Compiler</button>
+          <button class="view-tab view-tab-revise" data-view="revision">
+            Revise
+            <span class="view-tab-badge hidden" id="revision-tab-badge">0</span>
+          </button>
+          <button class="view-tab" data-view="dashboard">Dashboard</button>
+        </nav>
+        <div class="header-stats">
+          <div class="stat-pill" id="tracker-stat-pill">
+            <span id="solved-count">0</span> / <span id="total-count">0</span>
+            <span class="stat-label">Solved</span>
+          </div>
+          <div class="progress-ring-wrap" id="tracker-ring-wrap" title="Overall Progress">
+            <svg class="progress-ring" width="44" height="44">
+              <circle class="ring-bg" cx="22" cy="22" r="18" />
+              <circle class="ring-fill" id="ring-fill" cx="22" cy="22" r="18" />
+            </svg>
+            <span class="ring-percent" id="ring-percent">0%</span>
+          </div>
+          <button
+            class="data-btn"
+            id="sound-toggle-btn"
+            title="Toggle sound effects"
+            aria-label="Toggle sound effects"
+            aria-pressed="true"
+          >
+            <svg viewBox="0 0 24 24" fill="none" id="sound-icon-on">
+              <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/>
+              <path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" id="sound-icon-off" class="hidden">
+              <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/>
+              <path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button
+            class="data-btn"
+            id="export-btn"
+            title="Download a backup of your progress"
+            aria-label="Export progress"
+          >
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            class="data-btn"
+            id="import-btn"
+            title="Restore progress from a backup file"
+            aria-label="Import progress"
+          >
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 15V4m0 0l-4 4m4-4l4 4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <input type="file" id="import-file-input" accept="application/json" class="hidden" />
+          <button
+            class="data-btn hidden"
+            id="sync-btn"
+            title="Cloud sync"
+            aria-label="Cloud sync"
+          >
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 18a4.5 4.5 0 01-.4-8.98A5.5 5.5 0 0117 8.5a4 4 0 010 8H7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="sync-dot" id="sync-dot"></span>
+          </button>
+          <div class="reset-menu-wrap" id="reset-menu-wrap">
+            <button
+              class="data-btn"
+              id="reset-progress-btn"
+              title="Reset progress"
+              aria-label="Reset progress"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 12a9 9 0 1 0 3-6.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 4v5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="reset-menu hidden" id="reset-menu">
+              <div class="reset-menu-title">Reset Progress</div>
+              <p class="reset-menu-hint">Clears solved status &amp; time spent. Notes and starred questions are kept.</p>
+              <div class="reset-menu-row">
+                <select id="reset-topic-select"></select>
+                <button class="btn-secondary reset-menu-action" id="reset-topic-btn">Reset Topic</button>
+              </div>
+              <div class="reset-menu-divider"></div>
+              <button class="reset-menu-danger" id="reset-all-btn">Reset All Progress</button>
+            </div>
+          </div>
+          <div class="theme-menu-wrap" id="theme-menu-wrap">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              title="Change theme"
+              aria-label="Change theme"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="theme-swatch-dot" id="theme-swatch-dot" aria-hidden="true"></span>
+              <span class="theme-toggle-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.9-.5-1.4 0-1.1.9-2 2-2H17a5 5 0 0 0 5-5 8 8 0 0 0-10-8.2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="7.5" cy="10.8" r="1.15" fill="currentColor"/>
+                  <circle cx="11.2" cy="7" r="1.15" fill="currentColor"/>
+                  <circle cx="15.7" cy="9" r="1.15" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="theme-label" id="theme-label">Dark</span>
+            </button>
+            <div class="theme-menu hidden" id="theme-menu">
+              <div class="theme-menu-title">Theme</div>
+              <div class="theme-menu-list" id="theme-menu-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- STORAGE WARNING BANNER -->
+    <div id="storage-warning" class="storage-warning hidden">
+      ⚠️ Your browser is blocking local storage (this happens in private/incognito
+      windows or when a file is opened directly with <code>file://</code>). Your
+      progress <strong>will not be saved</strong> between visits — use the
+      <strong>Export</strong> button above before you close this tab, or open the
+      app through a normal http(s) URL / installed PWA instead.
+    </div>
+
+    <!-- NOTIFICATION PERMISSION BANNER -->
+    <div id="notif-banner" class="notif-banner hidden">
+      <span class="notif-banner-icon">🔔</span>
+      <span class="notif-banner-text">
+        Turn on notifications and we'll remind you to keep solving DSA
+        questions, protect your streak, and hit your daily goal.
+      </span>
+      <div class="notif-banner-actions">
+        <button class="btn-primary notif-banner-btn" id="notif-enable-btn">Enable notifications</button>
+        <button class="btn-secondary notif-banner-btn" id="notif-dismiss-btn">Maybe later</button>
+      </div>
+    </div>
+
+    <!-- TRACKER VIEW -->
+    <div id="view-tracker" class="app-view">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow"><span id="hero-eyebrow-text"></span><span class="typewriter-cursor"></span></p>
+        <h1 class="hero-heading">
+          Crack DSA,<br /><em>one problem at a time.</em>
+        </h1>
+        <p class="hero-sub">
+          Handpicked LeetCode problems. Track progress, filter by topic, and
+          build your streak.
+        </p>
+      </div>
+      <div class="hero-ticker" id="hero-ticker">
+        <span role="button" tabindex="0">Arrays</span><span role="button" tabindex="0">Strings</span><span role="button" tabindex="0">Linked List</span>
+        <span role="button" tabindex="0">Trees</span><span role="button" tabindex="0">Graphs</span><span role="button" tabindex="0">DP</span>
+        <span role="button" tabindex="0">Backtracking</span><span role="button" tabindex="0">Heaps</span><span role="button" tabindex="0">Greedy</span>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <div class="controls-bar">
+      <div class="controls-inner">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none">
+            <circle
+              cx="8.5"
+              cy="8.5"
+              r="5.5"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path
+              d="M13 13l3.5 3.5"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search questions…"
+            autocomplete="off"
+          />
+        </div>
+        <div class="filter-group">
+          <select id="topic-filter">
+            <option value="all">All Topics</option>
+          </select>
+          <select id="status-filter">
+            <option value="all">All Status</option>
+            <option value="solved">Solved</option>
+            <option value="unsolved">Unsolved</option>
+            <option value="important">Important</option>
+          </select>
+          <select id="diff-filter">
+            <option value="all">All Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+          <select id="company-filter">
+            <option value="all">All Companies</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div id="topic-sections"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <span class="empty-icon">🔍</span>
+        <p>No questions match your filters.</p>
+      </div>
+    </main>
+    </div>
+    <!-- /TRACKER VIEW -->
+
+    <!-- COMPILER VIEW -->
+    <section class="compiler-view app-view hidden" id="view-compiler">
+      <div class="compiler-inner">
+        <div class="compiler-toolbar">
+          <select id="lang-select">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="cpp">C++</option>
+            <option value="c">C</option>
+            <option value="java">Java</option>
+            <option value="csharp">C#</option>
+            <option value="go">Go</option>
+            <option value="rust">Rust</option>
+            <option value="ruby">Ruby</option>
+            <option value="typescript">TypeScript</option>
+          </select>
+          <button class="btn-primary compiler-run-btn" id="run-code-btn">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M4 2.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+            Run
+          </button>
+          <button class="btn-secondary" id="reset-code-btn">Reset</button>
+          <button class="btn-secondary compiler-analyze-btn" id="analyze-complexity-btn" title="Estimate time & space complexity">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 13.5V2M2 13.5h12M5 11V7M8.5 11V4.5M12 11V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Analyze Complexity
+          </button>
+          <span class="compiler-status" id="compiler-status"></span>
+          <button class="compiler-settings-btn" id="compiler-settings-btn" title="Execution settings" aria-label="Execution settings">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 13a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V19a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H4a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H10a1.65 1.65 0 001-1.51V4a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10a1.65 1.65 0 001.51 1H20a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="compiler-panels">
+          <div class="editor-panel" id="editor-panel">
+            <div class="panel-label">Code</div>
+            <div class="code-editor-stack" id="code-editor-stack">
+              <pre class="code-highlight" id="code-highlight" aria-hidden="true"><code id="code-highlight-code"></code></pre>
+              <textarea id="code-editor" spellcheck="false"></textarea>
+              <div class="autocomplete-popup hidden" id="autocomplete-popup"></div>
+            </div>
+          </div>
+          <div class="panel-resizer" id="panel-resizer" role="separator" aria-orientation="vertical" aria-label="Resize code editor" tabindex="0" title="Drag to resize"></div>
+          <div class="io-panel" id="io-panel">
+            <div class="testcases-panel">
+              <div class="panel-label testcases-label-row">
+                <span>Test Cases</span>
+                <button class="tc-add-btn" id="tc-add-btn" title="Add another test case">+ Case</button>
+              </div>
+              <div class="tc-tabs" id="tc-tabs"></div>
+              <div class="tc-body">
+                <div class="tc-field">
+                  <div class="tc-field-label">Input <span class="panel-label-sub">(stdin, optional)</span></div>
+                  <textarea id="tc-input" spellcheck="false" placeholder="Anything your program reads from stdin…"></textarea>
+                </div>
+                <div class="tc-field">
+                  <div class="tc-field-label">Expected Output <span class="panel-label-sub">(optional — leave blank to just view output)</span></div>
+                  <textarea id="tc-expected" spellcheck="false" placeholder="Paste the expected output to get a pass/fail check…"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="output-panel">
+              <div class="panel-label output-label-row">
+                <span>Output</span>
+                <span class="tc-summary" id="tc-summary"></span>
+              </div>
+              <div class="output-results" id="output-results">
+                <p class="output-results-empty">Run your code to see output here.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="complexity-panel hidden" id="complexity-panel">
+          <div class="panel-label complexity-label-row">
+            <span>Complexity Analysis</span>
+            <button class="complexity-close" id="complexity-close" title="Close" aria-label="Close">✕</button>
+          </div>
+          <div class="complexity-body" id="complexity-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPILER SETTINGS MODAL -->
+    <div class="modal-overlay hidden" id="compiler-settings-overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="compiler-settings-title">
+        <div class="modal-header">
+          <h2 id="compiler-settings-title">Execution Settings</h2>
+          <button class="modal-close" id="compiler-settings-close">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="settings-note">
+            JavaScript and Python run entirely in your browser — no setup needed.
+            Other languages (C++, Java, C, Go, Rust, C#, Ruby, TypeScript) are compiled
+            on a remote server. Point this at a
+            <a href="https://github.com/engineer-man/piston" target="_blank" rel="noopener">Piston</a>-compatible
+            API if you have access to one (self-hosted or a licensed key).
+          </p>
+          <div class="form-row">
+            <label for="exec-endpoint">Execute Endpoint URL</label>
+            <input id="exec-endpoint" type="url" placeholder="https://your-piston-instance.example.com/api/v2/execute" />
+          </div>
+          <div class="form-row">
+            <label for="exec-key">API Key <span class="opt-label">(optional, sent as X-Auth-Token)</span></label>
+            <input id="exec-key" type="text" placeholder="Leave blank if not required" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="compiler-settings-cancel">Cancel</button>
+          <button class="btn-primary" id="compiler-settings-save">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- /COMPILER VIEW -->
+
+    <!-- DASHBOARD VIEW (Progress + Calendar merged) -->
+    <section class="dashboard-view app-view hidden" id="view-dashboard">
+      <div class="dashboard-head">
+        <h2>Dashboard</h2>
+        <p class="dashboard-sub">Your stats, topic breakdown, and solve history — all in one place.</p>
+      </div>
+
+      <div class="journey-inner dashboard-section">
+        <div class="journey-head">
+          <h3>DSA Journey Map</h3>
+          <p class="journey-sub">Your roadmap through the sheet, in learning order. Clear a topic to unlock the next station.</p>
+        </div>
+        <div class="journey-track" id="journey-track"></div>
+      </div>
+
+      <div class="dashboard-divider"></div>
+
+      <div class="progress-inner dashboard-section">
+        <div class="progress-head">
+          <h3>Your Progress</h3>
+          <p class="progress-sub">Each slice is a topic, sized by how many questions it has. Color shows how much of it you've cleared.</p>
+        </div>
+
+        <div class="stat-dash" id="stat-dash">
+          <div class="stat-card" id="stat-streak">
+            <span class="stat-card-icon">🔥</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value" id="stat-streak-value">0</span>
+              <span class="stat-card-label">Day Streak</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-month">
+            <span class="stat-card-icon">📅</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value" id="stat-month-value">0</span>
+              <span class="stat-card-label">Days Practiced This Month</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-today">
+            <span class="stat-card-icon">✅</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value" id="stat-today-value">0</span>
+              <span class="stat-card-label">Solved Today</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-total">
+            <span class="stat-card-icon">📈</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value" id="stat-total-value">0</span>
+              <span class="stat-card-label">Total Solved</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-topic">
+            <span class="stat-card-icon">🧠</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value stat-card-value-sm" id="stat-topic-value">—</span>
+              <span class="stat-card-label">Current Topic</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-important">
+            <span class="stat-card-icon">⭐</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value" id="stat-important-value">0</span>
+              <span class="stat-card-label">Important Pending</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-time">
+            <span class="stat-card-icon">⏱️</span>
+            <div class="stat-card-body">
+              <span class="stat-card-value stat-card-value-sm" id="stat-time-value">0m</span>
+              <span class="stat-card-label">Time Practiced</span>
+            </div>
+          </div>
+          <div class="stat-card stat-card-goal" id="stat-goal" title="Click to change your daily goal">
+            <span class="stat-card-icon">🎯</span>
+            <div class="stat-card-body stat-card-body-goal">
+              <span class="stat-card-label">Today's Goal <span id="stat-goal-frac"></span></span>
+              <div class="stat-goal-track">
+                <div class="stat-goal-fill" id="stat-goal-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-grid">
+          <div class="progress-chart-wrap">
+            <svg id="progress-donut" class="progress-donut" viewBox="0 0 220 220"></svg>
+            <div class="progress-donut-center">
+              <span class="progress-donut-pct" id="progress-donut-pct">0%</span>
+              <span class="progress-donut-label">overall</span>
+            </div>
+          </div>
+          <div class="progress-legend" id="progress-legend"></div>
+        </div>
+        <div class="progress-bars" id="progress-bars"></div>
+      </div>
+
+      <div class="dashboard-divider"></div>
+
+      <div class="achievements-inner dashboard-section">
+        <div class="achievements-head">
+          <h3>Achievements</h3>
+          <p class="achievements-sub">Badges you unlock as you build your streak and clear questions.</p>
+        </div>
+        <p class="achievements-summary" id="achievements-summary"></p>
+
+        <div class="achievements-group">
+          <span class="achievements-group-label">🔥 Streak Milestones</span>
+          <div class="badge-grid" id="streak-badge-grid"></div>
+        </div>
+
+        <div class="achievements-group">
+          <span class="achievements-group-label">✅ Questions Solved</span>
+          <div class="badge-grid" id="solved-badge-grid"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-divider"></div>
+
+      <div class="calendar-inner dashboard-section">
+        <div class="calendar-head">
+          <h3>Solved History</h3>
+          <p class="calendar-sub">A GitHub-style heatmap of when you solved questions. Click any day to see what you cracked. Days with more than 5 solves keep a burning glow 🔥</p>
+        </div>
+
+        <div class="calendar-toolbar">
+          <button class="calendar-nav-btn" id="cal-prev" aria-label="Previous year">‹</button>
+          <span class="calendar-month-label" id="cal-year-label"></span>
+          <button class="calendar-nav-btn" id="cal-next" aria-label="Next year">›</button>
+          <button class="btn-secondary calendar-today-btn" id="cal-today-btn">This year</button>
+          <span class="calendar-heatmap-total" id="cal-heatmap-total"></span>
+        </div>
+
+        <div class="calendar-heatmap-scroll">
+          <div class="calendar-heatmap-months" id="calendar-heatmap-months"></div>
+          <div class="calendar-heatmap-body">
+            <div class="calendar-heatmap-weekdays" id="calendar-heatmap-weekdays"></div>
+            <div class="calendar-heatmap-grid" id="calendar-grid"></div>
+          </div>
+        </div>
+
+        <div class="calendar-heatmap-legend">
+          <span>Less</span>
+          <span class="heat-swatch" data-level="0"></span>
+          <span class="heat-swatch" data-level="1"></span>
+          <span class="heat-swatch" data-level="2"></span>
+          <span class="heat-swatch" data-level="3"></span>
+          <span class="heat-swatch" data-level="4"></span>
+          <span>More</span>
+        </div>
+
+        <div class="calendar-day-panel" id="calendar-day-panel">
+          <p class="calendar-day-panel-empty">Click a day to see what you solved.</p>
+        </div>
+      </div>
+    </section>
+    <!-- /DASHBOARD VIEW -->
+
+    <!-- REVISION VIEW (Spaced repetition: Day 1, 3, 7, 15, 30) -->
+    <section class="revision-view app-view hidden" id="view-revision">
+      <div class="dashboard-head">
+        <h2>Revision Scheduler</h2>
+        <p class="dashboard-sub">
+          Spaced repetition on questions you've solved — cards come due on Day
+          1, 3, 7, 15 &amp; 30. Re-solve from memory when a card is due, then
+          mark it revised.
+        </p>
+      </div>
+
+      <div class="revision-summary" id="revision-summary">
+        <div class="revision-summary-card is-overdue">
+          <span class="revision-summary-value" id="revision-overdue-count">0</span>
+          <span class="revision-summary-label">Overdue</span>
+        </div>
+        <div class="revision-summary-card is-today">
+          <span class="revision-summary-value" id="revision-today-count">0</span>
+          <span class="revision-summary-label">Due Today</span>
+        </div>
+        <div class="revision-summary-card is-upcoming">
+          <span class="revision-summary-value" id="revision-upcoming-count">0</span>
+          <span class="revision-summary-label">Upcoming</span>
+        </div>
+        <div class="revision-summary-card is-done">
+          <span class="revision-summary-value" id="revision-done-count">0</span>
+          <span class="revision-summary-label">Fully Revised</span>
+        </div>
+      </div>
+
+      <div class="revision-filter-row">
+        <select id="revision-filter-select">
+          <option value="pending">Due &amp; Overdue</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="all">All Solved Questions</option>
+        </select>
+      </div>
+
+      <div class="revision-list" id="revision-list"></div>
+    </section>
+    <!-- /REVISION VIEW -->
+
+    <div class="calendar-heatmap-tooltip" id="calendar-heatmap-tooltip" role="tooltip"></div>
+
+    <!-- ADD QUESTION MODAL TRIGGER -->
+    <button class="fab" id="open-modal-btn" title="Add a question">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 5v14M5 12h14"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <!-- MODAL -->
+    <div class="modal-overlay hidden" id="modal-overlay">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-header">
+          <h2 id="modal-title">Add Question</h2>
+          <button class="modal-close" id="modal-close">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <label for="q-title"
+              >Question Title <span class="req">*</span></label
+            >
+            <input id="q-title" type="text" placeholder="e.g. Two Sum" />
+          </div>
+          <div class="form-row">
+            <label for="q-link">LeetCode URL <span class="req">*</span></label>
+            <input
+              id="q-link"
+              type="url"
+              placeholder="https://leetcode.com/problems/…"
+            />
+          </div>
+          <div class="form-row-grid">
+            <div class="form-row">
+              <label for="q-topic">Topic <span class="req">*</span></label>
+              <input
+                id="q-topic"
+                type="text"
+                list="topic-list"
+                placeholder="e.g. Arrays"
+              />
+              <datalist id="topic-list"></datalist>
+            </div>
+            <div class="form-row">
+              <label for="q-diff">Difficulty</label>
+              <select id="q-diff">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="q-company">Companies <span class="opt-label">(optional)</span></label>
+            <input
+              id="q-company"
+              type="text"
+              list="company-list"
+              placeholder="e.g. Google, Amazon, Microsoft"
+            />
+            <datalist id="company-list"></datalist>
+            <p class="form-hint">Comma-separated. You can leave this blank for now and fill it in later.</p>
+          </div>
+          <div class="form-row">
+            <label for="q-notes">Notes (optional)</label>
+            <textarea
+              id="q-notes"
+              rows="2"
+              placeholder="Key insight, pattern, approach…"
+            ></textarea>
+          </div>
+          <p class="form-error hidden" id="form-error">
+            Please fill in all required fields.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="modal-cancel">Cancel</button>
+          <button class="btn-primary" id="modal-save">Add Question</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- STREAK CELEBRATION POPUP -->
+    <div class="streak-popup-overlay hidden" id="streak-popup-overlay">
+      <div class="streak-popup" id="streak-popup">
+        <button class="streak-popup-close" id="streak-popup-close" aria-label="Close">✕</button>
+        <div class="streak-popup-flame" id="streak-popup-flame">🔥</div>
+        <div class="streak-popup-count" id="streak-popup-count">1</div>
+        <div class="streak-popup-title" id="streak-popup-title">Day Streak</div>
+        <div class="streak-popup-badge hidden" id="streak-popup-badge">
+          <span class="streak-popup-badge-icon" id="streak-popup-badge-icon">🔥</span>
+          <span class="streak-popup-badge-label" id="streak-popup-badge-label"></span>
+        </div>
+        <p class="streak-popup-sub" id="streak-popup-sub">You're building momentum — keep it up!</p>
+      </div>
+    </div>
+
+    <!-- Cloud Sync (Firebase) — see firebase-config.js to set this up -->
+    <!-- CLOUD SYNC MODAL -->
+    <div class="modal-overlay hidden" id="sync-overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sync-title">
+        <div class="modal-header">
+          <h2 id="sync-title">Cloud Sync</h2>
+          <button class="modal-close" id="sync-close">✕</button>
+        </div>
+        <div class="modal-body" id="sync-body">
+          <!-- Signed-out state -->
+          <div id="sync-signed-out">
+            <p class="settings-note">
+              Sign in to back up your progress to the cloud and pick it up on
+              any other device. Your local data stays on this device either way.
+            </p>
+            <button class="sync-provider-btn" id="sync-google-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.47a5.53 5.53 0 01-2.4 3.63v3h3.88c2.27-2.09 3.55-5.17 3.55-8.82z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.94-2.9l-3.88-3.02c-1.08.72-2.45 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.12A12 12 0 0012 24z"/>
+                <path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 010-4.54V6.61H1.26a12 12 0 000 10.78l4.01-3.12z"/>
+                <path fill="#EA4335" d="M12 4.77c1.76 0 3.34.6 4.59 1.79l3.44-3.44C17.94 1.19 15.24 0 12 0 7.31 0 3.26 2.69 1.26 6.61l4.01 3.12C6.22 6.88 8.87 4.77 12 4.77z"/>
+              </svg>
+              Sign in with Google
+            </button>
+            <button class="sync-provider-btn" id="sync-github-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.39-5.27 5.67.42.36.78 1.07.78 2.15 0 1.56-.01 2.81-.01 3.19 0 .3.21.66.79.55A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+              </svg>
+              Sign in with GitHub
+            </button>
+            <p class="sync-setup-hint hidden" id="sync-not-configured">
+              Cloud sync isn't set up yet — add your Firebase project's keys to
+              <code>firebase-config.js</code> to enable it.
+            </p>
+          </div>
+          <!-- Signed-in state -->
+          <div id="sync-signed-in" class="hidden">
+            <div class="sync-account-row">
+              <img id="sync-avatar" class="sync-avatar" alt="" />
+              <div>
+                <div class="sync-account-name" id="sync-account-name"></div>
+                <div class="sync-account-email" id="sync-account-email"></div>
+              </div>
+            </div>
+            <p class="sync-status" id="sync-status-line">Synced.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary hidden" id="sync-signout-btn">Sign Out</button>
+          <button class="btn-primary hidden" id="sync-now-btn">Sync Now</button>
+          <button class="btn-secondary" id="sync-cancel-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((r) => console.log("SW registered:", r.scope))
+            .catch((e) => console.warn("SW failed:", e));
+        });
+      }
+    </script>
+  </body>
+</html>
